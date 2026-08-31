@@ -20,4 +20,12 @@
   xdg.configFile."gh/config.yml" = {
     source = config.lib.file.mkOutOfStoreSymlink "/home/viniciussl/dotfiles/gh/config.yml";
   };
+
+  home.file.".windsurf/acp/registry.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/windsurf/acp/registry.json";
+  };
+
+  home.file.".gemini/antigravity-acp/settings.json" = {
+    source = config.lib.file.mkOutOfStoreSymlink "${config.home.homeDirectory}/dotfiles/antigravity/acp-settings.json";
+  };
 }
