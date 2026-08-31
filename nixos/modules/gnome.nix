@@ -3,9 +3,10 @@
 {
   environment.systemPackages = with pkgs; [
     gnomeExtensions.clipboard-history
-    papirus-icon-theme
+    dracula-theme         # Dracula GTK and GNOME Shell theme
+    papirus-icon-theme    # Excellent dark icon set matching Dracula
+    gnome-extensions-cli  # Optional: useful to manage extensions via CLI
   ];
-
 
   # Enable dconf system service
   programs.dconf.enable = true;
@@ -17,7 +18,7 @@
 
         "org/gnome/desktop/interface" = {
           color-scheme = "prefer-dark";
-          gtk-theme = "Adwaita-dark";
+          gtk-theme = "Dracula";
           icon-theme = "Papirus";
         };
         "org/gnome/shell" = {
