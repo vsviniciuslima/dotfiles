@@ -1,0 +1,4 @@
+result
+.direnv/
+*.hm-bak
+gh/hosts.yml
