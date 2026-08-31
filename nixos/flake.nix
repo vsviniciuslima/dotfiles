@@ -16,22 +16,27 @@
     claude-desktop.url = "github:poeck/claude-desktop-nix-flake";
     claude-desktop.inputs.nixpkgs.follows = "nixpkgs";
 
-    # shdoc 
+    # shdoc
     shdoc-src = {
-      url = "github:reconquest/shdoc"; 
-      flake = false; 
+      url = "github:reconquest/shdoc";
+      flake = false;
     };
+
+    # Home Manager for per-user configuration
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
   };
 
-  outputs = { 
-    self, 
-    nixpkgs, 
+  outputs = {
+    self,
+    nixpkgs,
     nixos-cli,
-    claude-code, 
-    claude-desktop, 
+    claude-code,
+    claude-desktop,
     shdoc-src,
-    ... 
+    home-manager,
+    ...
   }@inputs: {
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
@@ -46,6 +51,8 @@
         nixos-cli.nixosModules.nixos-cli
         # Add this line to import the official module directly into your system
         inputs.claude-desktop.nixosModules.default
+        # Home Manager for per-user dotfile management
+        inputs.home-manager.nixosModules.home-manager
       ];
     };
   };

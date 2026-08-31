@@ -14,6 +14,7 @@
     ../../modules/users.nix
     ../../modules/syncthing.nix
     ../../modules/zsh-builder.nix
+    ../../modules/home.nix
   ];
 
   nix.settings.experimental-features = [ "nix-command" "flakes" ];
