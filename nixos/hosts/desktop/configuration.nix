@@ -10,6 +10,7 @@
     ../../modules/gnome.nix
     ../../modules/gaming.nix
     ../../modules/dev.nix
+    ../../modules/antigravity.nix
     ../../modules/shell.nix
     ../../modules/users.nix
     ../../modules/syncthing.nix

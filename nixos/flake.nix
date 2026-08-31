@@ -26,6 +26,10 @@
     home-manager.url = "github:nix-community/home-manager";
     home-manager.inputs.nixpkgs.follows = "nixpkgs";
 
+    antigravity-nix = {
+      url = "github:jacopone/antigravity-nix";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = {
@@ -36,6 +40,7 @@
     claude-desktop,
     shdoc-src,
     home-manager,
+    antigravity-nix,
     ...
   }@inputs: {
     nixosConfigurations.desktop = nixpkgs.lib.nixosSystem {
