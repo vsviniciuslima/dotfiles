@@ -8,9 +8,9 @@
 
   programs.git = {
     enable = true;
-    userName = "vsviniciuslima";
-    userEmail = "vsviniciuslima@usp.br";
-    extraConfig = {
+    settings = {
+      user.name = "vsviniciuslima";
+      user.email = "vsviniciuslima@usp.br";
       credential."https://github.com".helper = "!gh auth git-credential";
       credential."https://gist.github.com".helper = "!gh auth git-credential";
       safe.directory = [ "/etc/nixos" "/home/viniciussl/dotfiles/nixos" ];
