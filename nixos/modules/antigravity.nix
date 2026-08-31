@@ -9,6 +9,9 @@
 
     # Antigravity ACP Server wrapper
     (pkgs.writeShellScriptBin "agy_acp_server.par" ''
+      export SSL_CERT_FILE="/etc/ssl/certs/ca-bundle.crt"
+      export NIX_SSL_CERT_FILE="/etc/ssl/certs/ca-bundle.crt"
+      export SSL_CERT_DIR="/etc/ssl/certs"
       exec /home/viniciussl/.local/bin/agy_acp_server.par "$@"
     '')
   ];
