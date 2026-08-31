@@ -3,8 +3,8 @@
 {
   environment.systemPackages = with pkgs; [
     gnomeExtensions.clipboard-history
+    papirus-icon-theme
   ];
-
 
 
   # Enable dconf system service
@@ -14,6 +14,19 @@
   programs.dconf.profiles.user.databases = [
     {
       settings = {
+
+        "org/gnome/desktop/interface" = {
+          color-scheme = "prefer-dark";
+          gtk-theme = "Adwaita-dark";
+          icon-theme = "Papirus";
+        };
+        "org/gnome/shell" = {
+          enabled-extensions = [
+            "dash-to-dock@micxgx.gmail.com"
+            "Vitals@CoreCoding.com"
+          ];
+        };
+
         # 1. Register your active folder category IDs
         "org/gnome/desktop/app-folders" = {
           folder-children = [ "Development" "Media" "Utilities" "System" ];

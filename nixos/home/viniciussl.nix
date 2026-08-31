@@ -13,7 +13,7 @@
       user.email = "vsviniciuslima@usp.br";
       credential."https://github.com".helper = "!gh auth git-credential";
       credential."https://gist.github.com".helper = "!gh auth git-credential";
-      safe.directory = [ "/etc/nixos" "/home/viniciussl/dotfiles/nixos" ];
+      safe.directory = [ "/home/viniciussl/dotfiles/nixos" ];
     };
   };
 

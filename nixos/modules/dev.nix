@@ -27,6 +27,11 @@
     devin-desktop
     # Claude Code CLI tool
     inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
+
+    (python3.withPackages (ps: with ps; [
+      mkdocs
+      mkdocs-material
+    ]))
   ];
 
   myConfig.zshScripts = [
