@@ -1,8 +1,30 @@
 # Rebuild targetting a flake
 _nix-rebuild() {
-  echo "Rebuilding for $1 on desktop."
-  sudo nixos-rebuild "$1" --flake '/etc/nixos#desktop'
+  local flake_dir="/home/viniciussl/dotfiles/nixos"
+  
+  # Check if the flake directory actually exists first
+  if [ -d "$flake_dir" ]; then
+    # -C tells git to run the command inside the target directory
+    local untracked_files
+    untracked_files=$(git -C "$flake_dir" status --porcelain 2>/dev/null | grep "^??" | sed 's/^?? //')
+
+    if [[ -n "$untracked_files" ]]; then
+      echo -e "\e[33m⚡ Found untracked files in Flake directory! Staging them now:\e[0m"
+      
+      echo "$untracked_files" | while read -r file; do
+        echo -e "  \e[32m+ $file\e[0m"
+      done
+      
+      # Explicitly run git add from the scope of your config directory
+      git -C "$flake_dir" add -A
+      echo ""
+    fi
+  fi
+
+  echo "🚀 Rebuilding for $1 on desktop."
+  sudo nixos-rebuild "$1" --flake "$flake_dir#desktop"
 }
+
 
 nix-switch() {
   _nix-rebuild "switch"
