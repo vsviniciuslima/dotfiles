@@ -26,7 +26,7 @@
 
     devin-desktop
     # Claude Code CLI tool
-    inputs.claude-code.packages.${pkgs.system}.default
+    inputs.claude-code.packages.${pkgs.stdenv.hostPlatform.system}.default
   ];
 
   myConfig.zshScripts = [
