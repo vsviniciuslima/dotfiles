@@ -83,12 +83,16 @@ sleep 1
 echo "[3/3] Copiando ISO para o pendrive..."
 echo "Fonte: $ISO_PATH"
 echo "Destino: $MOUNT_POINT/"
-# Usar cp com progresso (rsync mais lento mas dá feedback melhor)
-rsync -avh --progress "$ISO_PATH" "$MOUNT_POINT/" || {
-  echo "Erro ao copiar a ISO. Desmontando..."
-  umount "$MOUNT_POINT"
-  rm -rf "$MOUNT_POINT"
-  exit 1
+# Usar rsync com flags que ignoram permissões (exFAT não suporta chown)
+rsync -avh --progress --no-p --no-o --no-g "$ISO_PATH" "$MOUNT_POINT/" || {
+  # Se falhar, tentar cp como fallback
+  echo "rsync falhou, tentando cp..."
+  cp -v "$ISO_PATH" "$MOUNT_POINT/" || {
+    echo "Erro ao copiar a ISO. Desmontando..."
+    umount "$MOUNT_POINT"
+    rm -rf "$MOUNT_POINT"
+    exit 1
+  }
 }
 
 # Sincronizar
