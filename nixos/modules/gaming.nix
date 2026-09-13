@@ -1,5 +1,17 @@
 { config, pkgs, ... }:
 
+let
+  prismlauncher-cracked = pkgs.prismlauncher.override {
+    prismlauncher-unwrapped = pkgs.prismlauncher-unwrapped.overrideAttrs (old: {
+      src = pkgs.fetchFromGitHub {
+        owner = "Diegiwg";
+        repo = "PrismLauncher-Cracked";
+        rev = "11.0.3";
+        hash = "sha256-pFIDOP03I76r14bXoKL7tEEaLlGFJ10MqMgGR4D/mvE=";
+      };
+    });
+  };
+in
 {
   programs.steam = {
     enable = true;
@@ -14,6 +26,8 @@
     hydralauncher
     discord
     heroic
+    prismlauncher-cracked
+    ntfs3g
   ];
 
   # Load Nvidia drivers
