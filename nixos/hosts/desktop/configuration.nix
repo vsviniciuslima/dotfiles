@@ -7,6 +7,7 @@
 {
   imports = [
     ./hardware-configuration.nix
+    ../../modules/agents.nix
     ../../modules/gnome.nix
     ../../modules/gaming.nix
     ../../modules/dev.nix
