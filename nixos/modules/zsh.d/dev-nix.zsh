@@ -70,3 +70,8 @@ nix-grid-dump() {
   fi
   echo -e "\n===================================================\n"
 }
+
+touchp() {
+    mkdir -p "$(dirname "$1")"
+    # command touch "$1"
+}
