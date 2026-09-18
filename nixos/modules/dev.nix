@@ -18,6 +18,7 @@
 
   # Development CLI tools and packages
   environment.systemPackages = with pkgs; [
+    jetbrains-toolbox
     git
     gh
     vim
