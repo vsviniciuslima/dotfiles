@@ -23,6 +23,7 @@
       mailspring
       playerctl
       tree
+      (callPackage ../pkgs/omniget.nix {})
     ];
 
      
